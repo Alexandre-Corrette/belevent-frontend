@@ -54,6 +54,9 @@ a {
 @import 'components/bel-master-detail';
 @import 'components/bel-empty-state';
 
+// --- Pages ---
+@import 'pages/auth-login';
+
 // Utility : sr-only (accessibilité)
 .sr-only {
   position: absolute;
