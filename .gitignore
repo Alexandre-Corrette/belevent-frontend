@@ -30,4 +30,5 @@ test-results
 
 # Misc
 *.tgz
+*.pdf
 .eslintcache
