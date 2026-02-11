@@ -19,7 +19,7 @@ export const useAuthStore = defineStore('auth', () => {
   const isPresta = computed(() => user.value?.role === 'ROLE_PRESTA')
   const isUser = computed(() => user.value?.role === 'ROLE_USER')
   const fullName = computed(() =>
-    user.value ? `${user.value.firstName} ${user.value.lastName}` : ''
+    user.value ? `${user.value.firstName} ${user.value.lastName}` : '',
   )
   const needsPasswordChange = computed(() => user.value?.isPasswordTemporary ?? false)
 

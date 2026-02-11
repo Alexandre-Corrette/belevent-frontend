@@ -1,13 +1,19 @@
 @mixin mobile {
-  @media (max-width: #{$bp-mobile - 1}) { @content; }
+  @media (max-width: #{$bp-mobile - 1}) {
+    @content;
+  }
 }
 
 @mixin tablet {
-  @media (min-width: $bp-mobile) and (max-width: #{$bp-tablet - 1}) { @content; }
+  @media (min-width: $bp-mobile) and (max-width: #{$bp-tablet - 1}) {
+    @content;
+  }
 }
 
 @mixin desktop {
-  @media (min-width: $bp-tablet) { @content; }
+  @media (min-width: $bp-tablet) {
+    @content;
+  }
 }
 
 @mixin card {
@@ -26,7 +32,9 @@
   border: 1.5px solid $bel-primary;
   border-radius: $radius-lg;
   padding: $space-sm $space-md;
-  transition: border-color $transition-base, box-shadow $transition-base;
+  transition:
+    border-color $transition-base,
+    box-shadow $transition-base;
   outline: none;
 
   &:hover {

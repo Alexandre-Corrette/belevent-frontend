@@ -70,7 +70,13 @@ export interface Client {
 }
 
 // --- Event ---
-export type EventCategory = 'mariage' | 'seminaire' | 'reception' | 'anniversaire' | 'communion' | 'autre'
+export type EventCategory =
+  | 'mariage'
+  | 'seminaire'
+  | 'reception'
+  | 'anniversaire'
+  | 'communion'
+  | 'autre'
 export type EventStatus = 'inquiry' | 'quoted' | 'confirmed' | 'cancelled'
 
 export interface EventItem {

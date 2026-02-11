@@ -4,22 +4,22 @@ Application frontend du SaaS BelEvent — plateforme de gestion événementielle
 
 ## Stack technique
 
-| Techno | Version | Rôle |
-|--------|---------|------|
-| **Nuxt 3** | ^3.x | Framework SSR/SSG (Vue 3 + TypeScript) |
-| **Vue 3** | ^3.5 | Composition API + `<script setup>` |
-| **TypeScript** | ^5.x | Typage strict sur tout le projet |
-| **Pinia** | ^2.x | State management (stores modulaires) |
-| **VeeValidate 4** | ^4.x | Validation formulaires |
-| **Zod** | ^3.x | Schémas de validation TypeScript |
-| **Sass** | — | CSS séparés (convention projet : pas de `<style>` inline) |
-| **Stripe.js** | ^4.x | Checkout & Connect onboarding (côté client) |
-| **marked** | ^14.x | Parsing markdown (réponses IA) |
-| **DOMPurify** | ^3.x | Sanitization HTML (anti-XSS) |
-| **VueUse** | ^11.x | Composables utilitaires |
-| **Vitest** | ^2.x | Tests unitaires |
-| **Playwright** | ^1.x | Tests E2E |
-| **ESLint + Prettier** | — | Linting & formatting |
+| Techno                | Version | Rôle                                                      |
+| --------------------- | ------- | --------------------------------------------------------- |
+| **Nuxt 3**            | ^3.x    | Framework SSR/SSG (Vue 3 + TypeScript)                    |
+| **Vue 3**             | ^3.5    | Composition API + `<script setup>`                        |
+| **TypeScript**        | ^5.x    | Typage strict sur tout le projet                          |
+| **Pinia**             | ^2.x    | State management (stores modulaires)                      |
+| **VeeValidate 4**     | ^4.x    | Validation formulaires                                    |
+| **Zod**               | ^3.x    | Schémas de validation TypeScript                          |
+| **Sass**              | —       | CSS séparés (convention projet : pas de `<style>` inline) |
+| **Stripe.js**         | ^4.x    | Checkout & Connect onboarding (côté client)               |
+| **marked**            | ^14.x   | Parsing markdown (réponses IA)                            |
+| **DOMPurify**         | ^3.x    | Sanitization HTML (anti-XSS)                              |
+| **VueUse**            | ^11.x   | Composables utilitaires                                   |
+| **Vitest**            | ^2.x    | Tests unitaires                                           |
+| **Playwright**        | ^1.x    | Tests E2E                                                 |
+| **ESLint + Prettier** | —       | Linting & formatting                                      |
 
 ## Architecture
 
@@ -35,24 +35,24 @@ pages/
 
 ### Layouts
 
-| Layout | Usage | Description |
-|--------|-------|-------------|
-| `LayoutAuth` | `/auth/*` | Centré, fond crème, card formulaire |
+| Layout         | Usage       | Description                             |
+| -------------- | ----------- | --------------------------------------- |
+| `LayoutAuth`   | `/auth/*`   | Centré, fond crème, card formulaire     |
 | `LayoutPresta` | `/presta/*` | Header + sidebar + sélecteur entreprise |
-| `LayoutUser` | `/user/*` | Header + sélecteur événement + cagnotte |
+| `LayoutUser`   | `/user/*`   | Header + sélecteur événement + cagnotte |
 | `LayoutWidget` | `/widget/*` | Autonome (bulle flottante bottom-right) |
 
 ### State management (Pinia)
 
-| Store | Domaine |
-|-------|---------|
-| `auth` | Utilisateur connecté, rôle, session |
-| `company` | Entreprise(s), contacts, statut Stripe |
-| `clients` | CRUD clients + recherche/filtres |
-| `events` | Événements + prestataires liés |
-| `documents` | Devis, factures, contrats + workflow |
-| `transactions` | Paiements Stripe + historique |
-| `chat` | Widget Leïa (messages, SSE, conversation) |
+| Store          | Domaine                                   |
+| -------------- | ----------------------------------------- |
+| `auth`         | Utilisateur connecté, rôle, session       |
+| `company`      | Entreprise(s), contacts, statut Stripe    |
+| `clients`      | CRUD clients + recherche/filtres          |
+| `events`       | Événements + prestataires liés            |
+| `documents`    | Devis, factures, contrats + workflow      |
+| `transactions` | Paiements Stripe + historique             |
+| `chat`         | Widget Leïa (messages, SSE, conversation) |
 
 ### Conventions CSS
 
@@ -65,14 +65,14 @@ pages/
 
 ### Design system (couleurs maquettes)
 
-| Token | Valeur | Usage |
-|-------|--------|-------|
-| `$bel-primary` | `#5A8A7A` | Teal — bordures, CTAs, navigation |
-| `$bel-accent` | `#D4A843` | Gold — highlights, hover, sélection active |
-| `$bel-bg-cream` | `#F5F0E8` | Fond principal |
-| `$bel-bg-warm` | `#EDE8DF` | Fond secondaire (cards, inputs) |
-| `$bel-text-dark` | `#2D2D2D` | Texte principal |
-| `$bel-text-muted` | `#6B6560` | Texte secondaire |
+| Token             | Valeur    | Usage                                      |
+| ----------------- | --------- | ------------------------------------------ |
+| `$bel-primary`    | `#5A8A7A` | Teal — bordures, CTAs, navigation          |
+| `$bel-accent`     | `#D4A843` | Gold — highlights, hover, sélection active |
+| `$bel-bg-cream`   | `#F5F0E8` | Fond principal                             |
+| `$bel-bg-warm`    | `#EDE8DF` | Fond secondaire (cards, inputs)            |
+| `$bel-text-dark`  | `#2D2D2D` | Texte principal                            |
+| `$bel-text-muted` | `#6B6560` | Texte secondaire                           |
 
 ## Sécurité
 
@@ -136,11 +136,11 @@ Le frontend est déployé sur **Vercel** (SSR Nuxt) ou **Scalingo** (avec le bac
 
 ## Communication avec le backend
 
-| Protocole | Usage | Auth |
-|-----------|-------|------|
-| REST (ofetch) | CRUD, formulaires, actions | JWT cookie |
-| SSE (Mercure) | Chat temps réel, notifications | JWT / API Key |
-| Stripe.js | Paiements, onboarding Connect | Clé publique Stripe |
+| Protocole     | Usage                          | Auth                |
+| ------------- | ------------------------------ | ------------------- |
+| REST (ofetch) | CRUD, formulaires, actions     | JWT cookie          |
+| SSE (Mercure) | Chat temps réel, notifications | JWT / API Key       |
+| Stripe.js     | Paiements, onboarding Connect  | Clé publique Stripe |
 
 L'API backend tourne sur Symfony 7 + API Platform et expose les endpoints sur `/api/`.
 
