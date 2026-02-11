@@ -1,0 +1,75 @@
+.bel-wizard {
+  &__steps {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $space-sm;
+    margin-bottom: $space-xl;
+  }
+
+  &__step {
+    display: flex;
+    align-items: center;
+    gap: $space-xs;
+    font-family: $font-body;
+    font-size: 13px;
+    font-weight: 500;
+    color: $bel-text-light;
+    cursor: default;
+
+    &--completed {
+      color: $bel-success;
+      cursor: pointer;
+    }
+
+    &--active {
+      color: $bel-primary;
+      font-weight: 700;
+    }
+  }
+
+  &__step-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: $radius-full;
+    font-size: 13px;
+    font-weight: 700;
+    border: 2px solid currentColor;
+    transition: all $transition-fast;
+
+    .bel-wizard__step--completed & {
+      background: $bel-success;
+      border-color: $bel-success;
+      color: $bel-bg-white;
+    }
+
+    .bel-wizard__step--active & {
+      border-color: $bel-primary;
+      color: $bel-primary;
+    }
+  }
+
+  &__separator {
+    width: 32px;
+    height: 2px;
+    background: rgba($bel-primary, 0.2);
+
+    &--completed {
+      background: $bel-success;
+    }
+  }
+
+  &__content {
+    min-height: 200px;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: $space-xl;
+    gap: $space-md;
+  }
+}

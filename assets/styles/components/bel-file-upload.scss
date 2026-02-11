@@ -1,0 +1,89 @@
+.bel-file-upload {
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+
+  &__label {
+    font-family: $font-body;
+    font-size: 13px;
+    font-weight: 500;
+    color: $bel-text-muted;
+    text-align: center;
+  }
+
+  &__zone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: $space-sm;
+    padding: $space-xl;
+    border: 2px dashed $bel-primary;
+    border-radius: $radius-lg;
+    background: rgba($bel-primary, 0.02);
+    cursor: pointer;
+    transition: all $transition-base;
+
+    &:hover,
+    &--dragover {
+      border-color: $bel-accent;
+      background: rgba($bel-accent, 0.05);
+    }
+  }
+
+  &__icon {
+    font-size: 32px;
+    color: $bel-text-light;
+  }
+
+  &__text {
+    font-size: 14px;
+    color: $bel-text-muted;
+    text-align: center;
+  }
+
+  &__types {
+    font-size: 12px;
+    color: $bel-text-light;
+  }
+
+  &__file {
+    display: flex;
+    align-items: center;
+    gap: $space-sm;
+    padding: $space-sm $space-md;
+    background: $bel-bg-warm;
+    border-radius: $radius-sm;
+  }
+
+  &__file-name {
+    flex: 1;
+    font-size: 13px;
+    color: $bel-text-dark;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__file-remove {
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: $bel-text-muted;
+    cursor: pointer;
+
+    &:hover {
+      color: $bel-danger;
+    }
+  }
+
+  &__error {
+    font-size: 12px;
+    color: $bel-danger;
+    text-align: center;
+  }
+
+  &--error &__zone {
+    border-color: $bel-danger;
+  }
+}

@@ -1,0 +1,21 @@
+.bel-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $space-md;
+  padding: $space-2xl;
+  text-align: center;
+
+  &__icon {
+    font-size: 48px;
+    color: $bel-text-light;
+    opacity: 0.5;
+  }
+
+  &__message {
+    font-size: 14px;
+    color: $bel-text-muted;
+    max-width: 300px;
+  }
+}

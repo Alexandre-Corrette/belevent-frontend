@@ -1,0 +1,81 @@
+.bel-master-detail {
+  display: flex;
+  height: 100%;
+  gap: $space-md;
+
+  &__master {
+    flex-shrink: 0;
+    overflow-y: auto;
+  }
+
+  &__detail {
+    flex: 1;
+    overflow-y: auto;
+  }
+
+  &__back {
+    display: none;
+    align-items: center;
+    gap: $space-xs;
+    margin-bottom: $space-md;
+    background: none;
+    border: none;
+    font-family: $font-body;
+    font-size: 14px;
+    color: $bel-primary;
+    cursor: pointer;
+    padding: $space-xs 0;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  @include mobile {
+    flex-direction: column;
+
+    &__master {
+      width: 100% !important;
+    }
+
+    &__detail {
+      width: 100%;
+    }
+
+    &--show-detail &__master {
+      display: none;
+    }
+
+    &--show-detail &__back {
+      display: flex;
+    }
+
+    &:not(&--show-detail) &__detail {
+      display: none;
+    }
+  }
+
+  @include tablet {
+    flex-direction: column;
+
+    &__master {
+      width: 100% !important;
+    }
+
+    &__detail {
+      width: 100%;
+    }
+
+    &--show-detail &__master {
+      display: none;
+    }
+
+    &--show-detail &__back {
+      display: flex;
+    }
+
+    &:not(&--show-detail) &__detail {
+      display: none;
+    }
+  }
+}

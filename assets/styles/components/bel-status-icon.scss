@@ -1,0 +1,33 @@
+.bel-status-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  &--sm {
+    font-size: 14px;
+  }
+
+  &--md {
+    font-size: 18px;
+  }
+
+  &--done {
+    color: $bel-success;
+  }
+
+  &--pending {
+    color: $bel-warning;
+  }
+
+  &--rejected {
+    color: $bel-danger;
+  }
+
+  &--shipping {
+    color: $bel-info;
+  }
+
+  &--none {
+    color: $bel-text-light;
+  }
+}

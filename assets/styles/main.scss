@@ -30,11 +30,26 @@ a {
   }
 }
 
+// --- Layouts ---
+@import 'layouts/auth';
+
 // --- Components ---
 @import 'components/bel-button';
 @import 'components/bel-input';
 @import 'components/bel-select';
 @import 'components/bel-card';
+@import 'components/bel-modal';
+@import 'components/bel-table';
+@import 'components/bel-badge';
+@import 'components/bel-tabs';
+@import 'components/bel-search-input';
+@import 'components/bel-wizard';
+@import 'components/bel-date-picker';
+@import 'components/bel-file-upload';
+@import 'components/bel-progress';
+@import 'components/bel-status-icon';
+@import 'components/bel-master-detail';
+@import 'components/bel-empty-state';
 
 // Utility : sr-only (accessibilité)
 .sr-only {

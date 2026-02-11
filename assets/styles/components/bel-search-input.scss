@@ -1,0 +1,53 @@
+.bel-search-input {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  &__icon {
+    position: absolute;
+    left: $space-md;
+    font-size: 16px;
+    color: $bel-text-light;
+    pointer-events: none;
+    transition: color $transition-fast;
+  }
+
+  &__field {
+    @include input-base;
+    width: 100%;
+    padding-left: 40px;
+    padding-right: 36px;
+  }
+
+  &__clear {
+    position: absolute;
+    right: $space-sm;
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: $bel-text-light;
+    cursor: pointer;
+    padding: $space-xs;
+    line-height: 1;
+    transition: color $transition-fast;
+
+    &:hover {
+      color: $bel-text-dark;
+    }
+  }
+
+  &__spinner {
+    position: absolute;
+    left: $space-md;
+    width: 16px;
+    height: 16px;
+    border: 2px solid $bel-text-light;
+    border-right-color: transparent;
+    border-radius: $radius-full;
+    animation: bel-spin 0.6s linear infinite;
+  }
+
+  &:focus-within &__icon {
+    color: $bel-primary;
+  }
+}

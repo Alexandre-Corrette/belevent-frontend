@@ -1,0 +1,48 @@
+.bel-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 2px solid rgba($bel-primary, 0.12);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &__tab {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: $space-xs;
+    padding: $space-sm $space-lg;
+    font-family: $font-body;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: $bel-text-muted;
+    background: none;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: color $transition-fast;
+
+    &:hover {
+      color: $bel-primary;
+    }
+
+    &--active {
+      color: $bel-primary;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: $bel-accent;
+      }
+    }
+  }
+}

@@ -1,0 +1,83 @@
+.bel-table {
+  width: 100%;
+  overflow-x: auto;
+
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  &__header {
+    background: $bel-bg-warm;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+
+    th {
+      font-family: $font-body;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: $bel-text-muted;
+      padding: $space-sm $space-md;
+      text-align: left;
+      white-space: nowrap;
+    }
+  }
+
+  &__sortable {
+    cursor: pointer;
+    user-select: none;
+    transition: color $transition-fast;
+
+    &:hover {
+      color: $bel-primary;
+    }
+  }
+
+  &__sort-icon {
+    margin-left: $space-xs;
+    font-size: 10px;
+    opacity: 0.4;
+
+    &--active {
+      opacity: 1;
+      color: $bel-accent;
+    }
+  }
+
+  &__row {
+    border-bottom: 1px solid rgba($bel-primary, 0.08);
+    transition: background $transition-fast;
+    cursor: pointer;
+
+    &:hover {
+      background: rgba($bel-primary, 0.03);
+    }
+
+    td {
+      font-size: 14px;
+      color: $bel-text-dark;
+      padding: $space-sm $space-md;
+    }
+  }
+
+  &__loading,
+  &__empty {
+    text-align: center;
+    padding: $space-2xl;
+    color: $bel-text-light;
+    font-size: 14px;
+  }
+
+  &__spinner {
+    width: 24px;
+    height: 24px;
+    border: 3px solid $bel-bg-warm;
+    border-top-color: $bel-primary;
+    border-radius: $radius-full;
+    animation: bel-spin 0.6s linear infinite;
+    margin: 0 auto $space-sm;
+  }
+}
