@@ -30,6 +30,12 @@ a {
   }
 }
 
+// --- Components ---
+@import 'components/bel-button';
+@import 'components/bel-input';
+@import 'components/bel-select';
+@import 'components/bel-card';
+
 // Utility : sr-only (accessibilité)
 .sr-only {
   position: absolute;

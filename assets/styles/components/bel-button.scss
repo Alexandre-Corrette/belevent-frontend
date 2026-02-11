@@ -1,0 +1,110 @@
+.bel-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-sm;
+  font-family: $font-body;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: all $transition-base;
+  white-space: nowrap;
+
+  &:focus-visible {
+    outline: 2px solid $bel-accent;
+    outline-offset: 2px;
+  }
+
+  // --- Sizes ---
+  &--sm {
+    font-size: 11px;
+    padding: $space-xs $space-md;
+    border-radius: $radius-sm;
+  }
+
+  &--md {
+    font-size: 13px;
+    padding: $space-sm $space-xl;
+    border-radius: $radius-sm;
+  }
+
+  &--lg {
+    font-size: 14px;
+    padding: $space-md $space-2xl;
+    border-radius: $radius-sm;
+  }
+
+  // --- Variants ---
+  &--primary {
+    color: $bel-text-dark;
+    background: $bel-bg-warm;
+    border-color: $bel-primary;
+
+    &:hover:not(:disabled) {
+      background: $bel-primary;
+      color: $bel-bg-white;
+      transform: translateY(-1px);
+      box-shadow: $shadow-sm;
+    }
+  }
+
+  &--outline {
+    color: $bel-primary;
+    background: transparent;
+    border-color: $bel-primary;
+
+    &:hover:not(:disabled) {
+      background: rgba($bel-primary, 0.08);
+    }
+  }
+
+  &--danger {
+    color: $bel-bg-white;
+    background: $bel-danger;
+    border-color: $bel-danger;
+
+    &:hover:not(:disabled) {
+      background: darken($bel-danger, 8%);
+      transform: translateY(-1px);
+      box-shadow: $shadow-sm;
+    }
+  }
+
+  &--ghost {
+    color: $bel-primary;
+    background: transparent;
+    border-color: transparent;
+
+    &:hover:not(:disabled) {
+      background: rgba($bel-primary, 0.06);
+    }
+  }
+
+  // --- States ---
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &--loading {
+    pointer-events: none;
+  }
+
+  // --- Spinner ---
+  &__spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid currentColor;
+    border-right-color: transparent;
+    border-radius: $radius-full;
+    animation: bel-spin 0.6s linear infinite;
+  }
+}
+
+@keyframes bel-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

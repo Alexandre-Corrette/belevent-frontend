@@ -1,0 +1,31 @@
+.bel-card {
+  @include card;
+
+  &__title {
+    font-family: $font-display;
+    font-size: 18px;
+    font-weight: 600;
+    color: $bel-text-dark;
+    text-align: center;
+    padding-bottom: $space-md;
+    margin-bottom: $space-md;
+    border-bottom: 1px solid rgba($bel-primary, 0.15);
+  }
+
+  // --- Padding variants ---
+  &--padding-none {
+    padding: 0;
+  }
+
+  &--padding-sm {
+    padding: $space-sm;
+  }
+
+  &--padding-md {
+    padding: $space-lg;
+  }
+
+  &--padding-lg {
+    padding: $space-2xl;
+  }
+}
