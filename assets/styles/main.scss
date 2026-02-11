@@ -57,6 +57,8 @@ a {
 // --- Pages ---
 @import 'pages/auth-login';
 @import 'pages/auth-register';
+@import 'pages/auth-first-login';
+@import 'pages/auth-password';
 
 // Utility : sr-only (accessibilité)
 .sr-only {

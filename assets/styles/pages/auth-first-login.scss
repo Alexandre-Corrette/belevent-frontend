@@ -1,0 +1,45 @@
+.auth-first-login {
+  text-align: center;
+
+  &__title {
+    font-family: $font-display;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: $bel-text-dark;
+    margin-bottom: $space-sm;
+  }
+
+  &__subtitle {
+    color: $bel-text-muted;
+    font-size: 0.9rem;
+    margin-bottom: $space-lg;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: $space-md;
+    text-align: left;
+  }
+
+  &__error {
+    color: $bel-danger;
+    font-size: 0.875rem;
+    padding: $space-sm $space-md;
+    background-color: rgba($bel-danger, 0.08);
+    border-radius: $radius-sm;
+    text-align: center;
+  }
+
+  &__link {
+    display: inline-block;
+    margin-top: $space-lg;
+    color: $bel-primary;
+    font-size: 0.875rem;
+
+    &:hover {
+      color: $bel-accent;
+      text-decoration: underline;
+    }
+  }
+}
