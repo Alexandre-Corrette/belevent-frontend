@@ -1,0 +1,98 @@
+.auth-register {
+  &__title {
+    font-family: $font-display;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: $bel-text-dark;
+    margin-bottom: $space-lg;
+    text-align: center;
+  }
+
+  &__links {
+    text-align: center;
+    margin-top: $space-lg;
+  }
+
+  &__link {
+    color: $bel-primary;
+    font-size: 0.875rem;
+
+    &:hover {
+      color: $bel-accent;
+      text-decoration: underline;
+    }
+  }
+}
+
+.register-step1,
+.register-step2 {
+  display: flex;
+  flex-direction: column;
+  gap: $space-md;
+}
+
+.register-step2 {
+  &__siret-field {
+    position: relative;
+  }
+
+  &__siret-spinner {
+    position: absolute;
+    right: $space-md;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+  }
+
+  &__siret-error,
+  &__error {
+    color: $bel-danger;
+    font-size: 0.875rem;
+  }
+
+  &__manual-notice {
+    color: $bel-warning;
+    font-size: 0.875rem;
+    padding: $space-sm $space-md;
+    background-color: rgba($bel-warning, 0.08);
+    border-radius: $radius-sm;
+  }
+}
+
+.register-step3 {
+  text-align: center;
+
+  &__title {
+    font-family: $font-display;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: $space-sm;
+  }
+
+  &__description {
+    color: $bel-text-muted;
+    font-size: 0.875rem;
+    margin-bottom: $space-lg;
+  }
+
+  &__error {
+    color: $bel-danger;
+    font-size: 0.875rem;
+    margin-top: $space-md;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    gap: $space-sm;
+    margin-top: $space-lg;
+    align-items: center;
+  }
+
+  &__notice {
+    color: $bel-text-muted;
+    font-size: 0.8rem;
+    margin-top: $space-md;
+    font-style: italic;
+  }
+}
