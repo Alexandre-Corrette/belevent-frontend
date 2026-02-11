@@ -1,0 +1,57 @@
+// ========================================
+// BelEvent Design Tokens
+// Extraits des maquettes (34 pages PDF)
+// ========================================
+
+// --- Couleurs ---
+$bel-primary: #5A8A7A;        // Teal — bordures, CTAs, brand
+$bel-accent: #D4A843;         // Gold — highlights, underlines, hover
+$bel-bg-cream: #F5F0E8;       // Fond principal
+$bel-bg-warm: #EDE8DF;        // Fond secondaire (cards)
+$bel-bg-white: #FFFFFF;       // Fond contenu
+$bel-text-dark: #2D2D2D;      // Texte principal
+$bel-text-muted: #6B6560;     // Texte secondaire
+$bel-text-light: #9A948D;     // Texte tertiaire
+
+$bel-success: #27AE60;
+$bel-warning: #E67E22;
+$bel-danger: #C0392B;
+$bel-info: #2B5F8A;
+
+// --- Typography ---
+$font-display: 'Playfair Display', serif;
+$font-body: 'Lato', sans-serif;
+
+// --- Spacing ---
+$space-xs: 4px;
+$space-sm: 8px;
+$space-md: 16px;
+$space-lg: 24px;
+$space-xl: 32px;
+$space-2xl: 48px;
+
+// --- Border Radius ---
+$radius-sm: 6px;
+$radius-md: 12px;
+$radius-lg: 24px;      // Cards, inputs (style maquettes)
+$radius-full: 9999px;  // Badges, avatars
+
+// --- Shadows ---
+$shadow-sm: 0 2px 8px rgba(45, 45, 45, 0.06);
+$shadow-md: 0 4px 20px rgba(45, 45, 45, 0.08);
+$shadow-lg: 0 8px 40px rgba(45, 45, 45, 0.12);
+
+// --- Breakpoints ---
+$bp-mobile: 640px;
+$bp-tablet: 1024px;
+$bp-desktop: 1280px;
+
+// --- Z-index ---
+$z-dropdown: 100;
+$z-modal: 200;
+$z-toast: 300;
+$z-widget: 400;
+
+// --- Transitions ---
+$transition-fast: 0.15s ease;
+$transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);

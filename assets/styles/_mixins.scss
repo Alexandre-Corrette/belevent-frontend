@@ -1,0 +1,71 @@
+@mixin mobile {
+  @media (max-width: #{$bp-mobile - 1}) { @content; }
+}
+
+@mixin tablet {
+  @media (min-width: $bp-mobile) and (max-width: #{$bp-tablet - 1}) { @content; }
+}
+
+@mixin desktop {
+  @media (min-width: $bp-tablet) { @content; }
+}
+
+@mixin card {
+  background: $bel-bg-white;
+  border: 2px solid $bel-primary;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-md;
+  padding: $space-lg;
+}
+
+@mixin input-base {
+  font-family: $font-body;
+  font-size: 14px;
+  color: $bel-text-dark;
+  background: $bel-bg-white;
+  border: 1.5px solid $bel-primary;
+  border-radius: $radius-lg;
+  padding: $space-sm $space-md;
+  transition: border-color $transition-base, box-shadow $transition-base;
+  outline: none;
+
+  &:hover {
+    border-color: darken($bel-primary, 10%);
+  }
+
+  &:focus {
+    border-color: $bel-accent;
+    box-shadow: 0 0 0 3px rgba($bel-accent, 0.15);
+  }
+
+  &::placeholder {
+    color: $bel-text-light;
+  }
+}
+
+@mixin btn-primary {
+  font-family: $font-body;
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: $bel-text-dark;
+  background: $bel-bg-warm;
+  border: 1.5px solid $bel-primary;
+  border-radius: $radius-sm;
+  padding: $space-sm $space-xl;
+  cursor: pointer;
+  transition: all $transition-base;
+
+  &:hover:not(:disabled) {
+    background: $bel-primary;
+    color: $bel-bg-white;
+    transform: translateY(-1px);
+    box-shadow: $shadow-sm;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
