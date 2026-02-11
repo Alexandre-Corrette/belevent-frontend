@@ -35,6 +35,7 @@
     "happy-dom": "^20.6.1",
     "prettier": "^3.8.1",
     "sass-embedded": "^1.97.3",
-    "vitest": "^4.0.18"
+    "vitest": "^4.0.18",
+    "vue-tsc": "^3.2.4"
   }
 }
