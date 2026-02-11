@@ -22,7 +22,11 @@ export default defineNuxtRouteMiddleware(async (to) => {
   }
 
   // Forcer le changement de mot de passe si temporaire
-  if (auth.needsPasswordChange && to.path !== '/auth/reset-password') {
-    return navigateTo('/auth/reset-password')
+  if (
+    auth.needsPasswordChange &&
+    to.path !== '/auth/first-login' &&
+    to.path !== '/auth/reset-password'
+  ) {
+    return navigateTo('/auth/first-login')
   }
 })
