@@ -1,0 +1,77 @@
+.company-selector {
+  position: relative;
+
+  &__trigger {
+    display: flex;
+    align-items: center;
+    gap: $space-xs;
+    background: none;
+    border: none;
+    cursor: default;
+    font-family: $font-body;
+    font-size: 0.875rem;
+    color: $bel-text-dark;
+    padding: $space-xs $space-sm;
+    border-radius: $radius-sm;
+
+    &--clickable {
+      cursor: pointer;
+
+      &:hover {
+        background-color: rgba($bel-primary, 0.06);
+      }
+    }
+  }
+
+  &__name {
+    font-weight: 600;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__chevron {
+    font-size: 0.6rem;
+    transition: transform $transition-fast;
+
+    &--open {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 200px;
+    background: $bel-bg-white;
+    border: 1px solid $bel-primary;
+    border-radius: $radius-sm;
+    box-shadow: $shadow-md;
+    z-index: $z-dropdown;
+    overflow: hidden;
+  }
+
+  &__option {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    padding: $space-sm $space-md;
+    font-family: $font-body;
+    font-size: 0.875rem;
+    color: $bel-text-dark;
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgba($bel-primary, 0.06);
+    }
+
+    &--active {
+      color: $bel-primary;
+      font-weight: 600;
+    }
+  }
+}

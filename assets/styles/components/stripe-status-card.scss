@@ -1,0 +1,45 @@
+.stripe-status-card {
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+  padding: $space-md;
+  background: $bel-bg-white;
+  border: 1px solid $bel-primary;
+  border-radius: $radius-md;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: $space-sm;
+    padding: $space-sm 0;
+    border-bottom: 1px solid $bel-bg-warm;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__label {
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: $bel-text-dark;
+    flex: 1;
+  }
+
+  &__status {
+    font-size: 0.8rem;
+    font-weight: 500;
+
+    &--done {
+      color: $bel-success;
+    }
+
+    &--pending {
+      color: $bel-warning;
+    }
+
+    &--rejected {
+      color: $bel-danger;
+    }
+  }
+}
