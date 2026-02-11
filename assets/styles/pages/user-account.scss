@@ -1,0 +1,115 @@
+.user-account {
+  &__title {
+    font-family: $font-display;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: $bel-text-dark;
+    margin-bottom: $space-lg;
+  }
+
+  &__section {
+    margin-bottom: $space-xl;
+    padding-bottom: $space-lg;
+    border-bottom: 1px solid $bel-bg-warm;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__section-title {
+    font-family: $font-display;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: $bel-text-dark;
+    margin-bottom: $space-md;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $space-md;
+    margin-bottom: $space-md;
+
+    @media (max-width: $bp-mobile) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: $space-xs;
+  }
+
+  &__label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: $bel-text-muted;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  &__value {
+    font-size: 0.9rem;
+    color: $bel-text-dark;
+
+    &--mono {
+      font-family: monospace;
+    }
+  }
+
+  &__warning {
+    color: $bel-warning;
+    font-size: 0.875rem;
+    padding: $space-sm $space-md;
+    background-color: rgba($bel-warning, 0.08);
+    border-radius: $radius-sm;
+  }
+
+  &__error {
+    color: $bel-danger;
+    font-size: 0.875rem;
+    text-align: center;
+  }
+
+  &__checkbox {
+    display: flex;
+    align-items: center;
+    gap: $space-sm;
+    font-size: 0.9rem;
+    color: $bel-text-dark;
+    cursor: pointer;
+    margin-bottom: $space-md;
+
+    input[type='checkbox'] {
+      accent-color: $bel-primary;
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  &__company-form {
+    display: flex;
+    flex-direction: column;
+    gap: $space-md;
+    margin-top: $space-md;
+  }
+
+  &__siret-field {
+    position: relative;
+  }
+
+  &__siret-spinner {
+    position: absolute;
+    right: $space-md;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &__password-form {
+    display: flex;
+    flex-direction: column;
+    gap: $space-md;
+  }
+}
