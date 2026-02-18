@@ -1,3 +1,6 @@
+@use "sass:color";
+@use ".." as *;
+
 .bel-card {
   @include card;
 
@@ -9,7 +12,7 @@
     text-align: center;
     padding-bottom: $space-md;
     margin-bottom: $space-md;
-    border-bottom: 1px solid rgba($bel-primary, 0.15);
+    border-bottom: 1px solid color.change($bel-primary, $alpha: 0.15);
   }
 
   // --- Padding variants ---

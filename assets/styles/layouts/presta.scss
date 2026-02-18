@@ -1,3 +1,6 @@
+@use "sass:color";
+@use ".." as *;
+
 .layout-presta {
   min-height: 100vh;
   background-color: $bel-bg-cream;
@@ -63,7 +66,7 @@
     gap: $space-xl;
     padding: $space-sm 0;
     background: $bel-bg-white;
-    border-bottom: 1px solid rgba($bel-primary, 0.1);
+    border-bottom: 1px solid color.change($bel-primary, $alpha: 0.1);
   }
 
   &__nav-item {

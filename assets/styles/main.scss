@@ -1,79 +1,37 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  font-family: $font-body;
-  font-size: 16px;
-  color: $bel-text-dark;
-  background-color: $bel-bg-cream;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-body {
-  min-height: 100vh;
-}
-
-a {
-  color: $bel-primary;
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
-}
+// --- Fondations ---
+@use "base";
 
 // --- Layouts ---
-@import 'layouts/auth';
-@import 'layouts/presta';
-@import 'layouts/user';
-@import 'layouts/widget';
+@use "layouts/auth";
+@use "layouts/presta";
+@use "layouts/user";
+@use "layouts/widget";
 
 // --- Components ---
-@import 'components/bel-button';
-@import 'components/bel-input';
-@import 'components/bel-select';
-@import 'components/bel-card';
-@import 'components/bel-modal';
-@import 'components/bel-table';
-@import 'components/bel-badge';
-@import 'components/bel-tabs';
-@import 'components/bel-search-input';
-@import 'components/bel-wizard';
-@import 'components/bel-date-picker';
-@import 'components/bel-file-upload';
-@import 'components/bel-progress';
-@import 'components/bel-status-icon';
-@import 'components/bel-master-detail';
-@import 'components/bel-empty-state';
-@import 'components/company-selector';
-@import 'components/password-strength';
-@import 'components/stripe-status-card';
+@use "components/bel-button";
+@use "components/bel-input";
+@use "components/bel-select";
+@use "components/bel-card";
+@use "components/bel-modal";
+@use "components/bel-table";
+@use "components/bel-badge";
+@use "components/bel-tabs";
+@use "components/bel-search-input";
+@use "components/bel-wizard";
+@use "components/bel-date-picker";
+@use "components/bel-file-upload";
+@use "components/bel-progress";
+@use "components/bel-status-icon";
+@use "components/bel-master-detail";
+@use "components/bel-empty-state";
+@use "components/company-selector";
+@use "components/password-strength";
+@use "components/stripe-status-card";
 
 // --- Pages ---
-@import 'pages/auth-login';
-@import 'pages/auth-register';
-@import 'pages/auth-first-login';
-@import 'pages/auth-password';
-@import 'pages/presta-account';
-@import 'pages/user-account';
-
-// Utility : sr-only (accessibilité)
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
-}
+@use "pages/auth-login";
+@use "pages/auth-register";
+@use "pages/auth-first-login";
+@use "pages/auth-password";
+@use "pages/presta-account";
+@use "pages/user-account";

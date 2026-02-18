@@ -14,9 +14,8 @@ export default defineNuxtRouteMiddleware(async (to) => {
   try {
     await auth.verifyInvitationToken(token)
   } catch {
-    return navigateTo('/auth/login', {
+    return navigateTo('/auth/login?error=token_invalid', {
       replace: true,
-      query: { error: 'token_invalid' },
     })
   }
 })

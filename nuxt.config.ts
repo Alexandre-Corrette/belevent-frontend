@@ -3,6 +3,18 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-01-01',
   devtools: { enabled: true },
 
+  dir: {
+    app: 'app',
+    pages: 'app/pages',
+    layouts: 'app/layouts',
+    middleware: 'app/middleware',
+    plugins: 'app/plugins',
+  },
+
+  components: [
+    { path: '~/components', pathPrefix: false },
+  ],
+
   modules: [
     '@pinia/nuxt',
     '@vueuse/nuxt',
@@ -23,18 +35,16 @@ export default defineNuxtConfig({
 
   css: ['~/assets/styles/main.scss'],
 
-  vite: {
-    css: {
-      preprocessorOptions: {
-        scss: {
-          additionalData: `
-            @use "~/assets/styles/_variables" as *;
-            @use "~/assets/styles/_mixins" as *;
-          `,
-        },
-      },
-    },
-  },
+vite: {
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@use "~/assets/styles/variables" as *; @use "~/assets/styles/mixins" as *;`
+      }
+    }
+  }
+},
+
 
   typescript: {
     strict: true,
@@ -58,4 +68,5 @@ export default defineNuxtConfig({
       },
     },
   },
+  
 })

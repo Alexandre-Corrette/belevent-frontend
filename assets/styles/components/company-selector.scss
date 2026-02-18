@@ -1,3 +1,6 @@
+@use "sass:color";
+@use ".." as *;
+
 .company-selector {
   position: relative;
 
@@ -18,7 +21,7 @@
       cursor: pointer;
 
       &:hover {
-        background-color: rgba($bel-primary, 0.06);
+        background-color: color.change($bel-primary, $alpha: 0.06);
       }
     }
   }
@@ -66,7 +69,7 @@
     cursor: pointer;
 
     &:hover {
-      background-color: rgba($bel-primary, 0.06);
+      background-color: color.change($bel-primary, $alpha: 0.06);
     }
 
     &--active {

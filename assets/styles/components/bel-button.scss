@@ -1,3 +1,6 @@
+@use "sass:color";
+@use ".." as *;
+
 .bel-button {
   display: inline-flex;
   align-items: center;
@@ -56,7 +59,7 @@
     border-color: $bel-primary;
 
     &:hover:not(:disabled) {
-      background: rgba($bel-primary, 0.08);
+      background: color.change($bel-primary, $alpha: 0.08);
     }
   }
 
@@ -66,7 +69,7 @@
     border-color: $bel-danger;
 
     &:hover:not(:disabled) {
-      background: darken($bel-danger, 8%);
+      background: color.adjust($bel-danger, $lightness: -8%);
       transform: translateY(-1px);
       box-shadow: $shadow-sm;
     }
@@ -78,7 +81,7 @@
     border-color: transparent;
 
     &:hover:not(:disabled) {
-      background: rgba($bel-primary, 0.06);
+      background: color.change($bel-primary, $alpha: 0.06);
     }
   }
 

@@ -1,3 +1,6 @@
+@use "sass:color";
+@use ".." as *;
+
 .bel-modal {
   &__overlay {
     position: fixed;
@@ -39,7 +42,7 @@
     align-items: center;
     justify-content: space-between;
     padding: $space-md $space-lg;
-    border-bottom: 1px solid rgba($bel-primary, 0.15);
+    border-bottom: 1px solid color.change($bel-primary, $alpha: 0.15);
   }
 
   &__title {
@@ -74,7 +77,7 @@
     justify-content: flex-end;
     gap: $space-sm;
     padding: $space-md $space-lg;
-    border-top: 1px solid rgba($bel-primary, 0.15);
+    border-top: 1px solid color.change($bel-primary, $alpha: 0.15);
   }
 }
 

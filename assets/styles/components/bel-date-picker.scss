@@ -1,3 +1,6 @@
+@use "sass:color";
+@use ".." as *;
+
 .bel-date-picker {
   position: relative;
   display: flex;
@@ -96,7 +99,7 @@
     transition: all $transition-fast;
 
     &:hover:not(&--disabled):not(&--selected) {
-      background: rgba($bel-primary, 0.08);
+      background: color.change($bel-primary, $alpha: 0.08);
     }
 
     &--selected {

@@ -1,7 +1,10 @@
+@use "sass:color";
+@use ".." as *;
+
 .bel-tabs {
   display: flex;
   gap: 0;
-  border-bottom: 2px solid rgba($bel-primary, 0.12);
+  border-bottom: 2px solid color.change($bel-primary, $alpha: 0.12);
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 

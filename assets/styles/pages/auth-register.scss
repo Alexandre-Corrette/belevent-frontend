@@ -1,3 +1,6 @@
+@use "sass:color";
+@use ".." as *;
+
 .auth-register {
   &__title {
     font-family: $font-display;
@@ -54,7 +57,7 @@
     color: $bel-warning;
     font-size: 0.875rem;
     padding: $space-sm $space-md;
-    background-color: rgba($bel-warning, 0.08);
+    background-color: color.change($bel-warning, $alpha: 0.08);
     border-radius: $radius-sm;
   }
 }

@@ -1,3 +1,6 @@
+@use "sass:color";
+@use ".." as *;
+
 .auth-first-login {
   text-align: center;
 
@@ -26,7 +29,7 @@
     color: $bel-danger;
     font-size: 0.875rem;
     padding: $space-sm $space-md;
-    background-color: rgba($bel-danger, 0.08);
+    background-color: color.change($bel-danger, $alpha: 0.08);
     border-radius: $radius-sm;
     text-align: center;
   }

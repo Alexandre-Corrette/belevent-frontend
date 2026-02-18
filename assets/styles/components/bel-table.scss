@@ -1,3 +1,6 @@
+@use "sass:color";
+@use ".." as *;
+
 .bel-table {
   width: 100%;
   overflow-x: auto;
@@ -48,12 +51,12 @@
   }
 
   &__row {
-    border-bottom: 1px solid rgba($bel-primary, 0.08);
+    border-bottom: 1px solid color.change($bel-primary, $alpha: 0.08);
     transition: background $transition-fast;
     cursor: pointer;
 
     &:hover {
-      background: rgba($bel-primary, 0.03);
+      background: color.change($bel-primary, $alpha: 0.03);
     }
 
     td {

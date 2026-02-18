@@ -33,7 +33,7 @@ export const contactSchema = z.object({
     z.string().min(1, 'Le nom est requis'),
   ),
   role: z.enum(['admin', 'commercial', 'comptabilite'], {
-    errorMap: () => ({ message: 'Rôle invalide' }),
+    error: 'Rôle invalide',
   }),
   phone: z
     .string()
