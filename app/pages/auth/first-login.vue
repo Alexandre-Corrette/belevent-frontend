@@ -81,7 +81,8 @@ const onChangePassword = handleChangeSubmit(async (values) => {
     await authStore.changePassword(loginPassword.value, values.password)
     await authStore.fetchMe()
 
-    const roleRedirects: [string, string][] = [
+    type Role = 'ROLE_PRESTA' | 'ROLE_USER' | 'ROLE_ADMIN'
+    const roleRedirects: [Role, string][] = [
       ['ROLE_ADMIN', '/admin'],
       ['ROLE_PRESTA', '/presta'],
       ['ROLE_USER', '/user'],
