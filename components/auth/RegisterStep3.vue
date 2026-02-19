@@ -108,5 +108,14 @@ onMounted(() => {
     <p v-if="!allVerified" class="register-step3__notice">
       Vérification en cours ? Vous recevrez un email quand tout sera validé.
     </p>
+
+    <button
+      v-if="!allVerified"
+      class="register-step3__skip"
+      type="button"
+      @click="complete"
+    >
+      Configurer plus tard
+    </button>
   </div>
 </template>
