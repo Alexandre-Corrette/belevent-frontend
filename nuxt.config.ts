@@ -25,7 +25,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      apiBaseUrl: process.env.NUXT_PUBLIC_API_BASE_URL || 'http://localhost:8000/api',
+      apiBaseUrl: process.env.NUXT_PUBLIC_API_BASE_URL || 'http://localhost:8080/api',
       mercureUrl:
         process.env.NUXT_PUBLIC_MERCURE_URL || 'http://localhost:3000/.well-known/mercure',
       stripePublicKey: process.env.NUXT_PUBLIC_STRIPE_PUBLIC_KEY || '',
