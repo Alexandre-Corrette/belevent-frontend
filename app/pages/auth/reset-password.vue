@@ -14,6 +14,7 @@ const prefilledEmail = ref('')
 const serverError = ref('')
 const tokenError = ref('')
 const tokenValidated = ref(false)
+const success = ref(false)
 
 // Valider le token au chargement
 onMounted(async () => {
@@ -46,10 +47,10 @@ const onSubmit = handleSubmit(async (values) => {
 
   try {
     await authStore.resetPassword(token.value, values.password)
-    await router.push({
-      path: '/auth/login',
-      query: { message: 'password_changed' },
-    })
+    success.value = true
+    setTimeout(() => {
+      router.push('/auth/login')
+    }, 3000)
   } catch {
     serverError.value = 'Impossible de réinitialiser le mot de passe'
   }
@@ -65,6 +66,14 @@ const onSubmit = handleSubmit(async (values) => {
       <NuxtLink to="/auth/forgot-password" class="auth-reset-password__link">
         Demander un nouveau lien
       </NuxtLink>
+    </template>
+
+    <!-- Success -->
+    <template v-else-if="success">
+      <h1 class="auth-reset-password__title">Mot de passe modifié</h1>
+      <p class="auth-reset-password__success">
+        Votre mot de passe a été réinitialisé. Redirection vers la connexion...
+      </p>
     </template>
 
     <!-- Reset form -->
