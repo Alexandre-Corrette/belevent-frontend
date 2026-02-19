@@ -26,12 +26,14 @@ const onSubmit = handleSubmit(async (values) => {
   try {
     await authStore.login({ email: values.email, password: values.password })
 
-    if (authStore.isPresta) {
+    if (authStore.isAdmin) {
+      await router.push('/admin')
+    } else if (authStore.isPresta) {
       await router.push('/presta')
     } else if (authStore.isUser) {
       await router.push('/user')
     } else {
-      await router.push('/')
+      await router.push('/auth/login')
     }
   } catch {
     serverError.value = 'Identifiants incorrects'

@@ -19,8 +19,9 @@ export const useAuthStore = defineStore('auth', () => {
   const isPasswordTemporary = ref(false)
 
   // Getters
-  const isPresta = computed(() => user.value?.role === 'ROLE_PRESTA')
-  const isUser = computed(() => user.value?.role === 'ROLE_USER')
+  const isPresta = computed(() => user.value?.roles?.includes('ROLE_PRESTA') ?? false)
+  const isUser = computed(() => user.value?.roles?.includes('ROLE_USER') ?? false)
+  const isAdmin = computed(() => user.value?.roles?.includes('ROLE_ADMIN') ?? false)
   const fullName = computed(() =>
     user.value ? `${user.value.firstName} ${user.value.lastName}` : '',
   )
@@ -136,6 +137,7 @@ export const useAuthStore = defineStore('auth', () => {
     isPasswordTemporary,
     isPresta,
     isUser,
+    isAdmin,
     fullName,
     needsPasswordChange,
     login,

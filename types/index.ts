@@ -8,7 +8,7 @@ export interface User {
   email: string
   firstName: string
   lastName: string
-  role: 'ROLE_PRESTA' | 'ROLE_USER' | 'ROLE_ADMIN'
+  roles: ('ROLE_PRESTA' | 'ROLE_USER' | 'ROLE_ADMIN')[]
   isPasswordTemporary: boolean
   createdAt: string
 }
