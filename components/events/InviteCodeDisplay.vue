@@ -1,9 +1,14 @@
 <script setup lang="ts">
 interface Props {
   code: string
+  eventId?: number
 }
 
 const props = defineProps<Props>()
+
+const emit = defineEmits<{
+  'update:code': [code: string]
+}>()
 const { show: showToast } = useToast()
 
 const displayCode = computed(() => `EVT-${props.code}`)
@@ -46,7 +51,14 @@ async function share() {
 
 <template>
   <div class="invite-code-display">
-    <p class="invite-code-display__code">{{ displayCode }}</p>
+    <div class="invite-code-display__code-row">
+      <p class="invite-code-display__code">{{ displayCode }}</p>
+      <RegenerateCodeButton
+        v-if="eventId"
+        :event-id="eventId"
+        @regenerated="(code) => emit('update:code', code)"
+      />
+    </div>
 
     <div class="invite-code-display__actions">
       <BelButton
@@ -75,6 +87,12 @@ async function share() {
   background: #f0f4ff;
   border-radius: 12px;
   border: 2px dashed #6366f1;
+}
+
+.invite-code-display__code-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
 
 .invite-code-display__code {
