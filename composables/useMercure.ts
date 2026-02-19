@@ -1,33 +1,41 @@
 /**
  * Composable for Mercure SSE subscriptions.
  *
- * - Connects to Mercure hub via EventSource
- * - Auto-reconnect with exponential backoff (1s, 2s, 4s... max 30s)
- * - Subscribe/unsubscribe to topics
- * - Exposes reactive connection status
+ * Two usage patterns:
+ * 1. Simple: useMercure(topic, onMessage) — auto-subscribes, cleanup on unmount
+ * 2. Advanced: useMercure() then .subscribe(topic, callback)
+ *
+ * Features:
+ * - Auto-reconnect with exponential backoff (1s → 30s max)
+ * - JSON parsing of messages
+ * - Topic validation
+ * - Cleanup on unmount
  */
-export const useMercure = () => {
+export function useMercure(topic?: string, onMessage?: (data: unknown) => void) {
   const config = useRuntimeConfig()
   const mercureUrl = config.public.mercureUrl
 
   const connectionStatus = ref<'connecting' | 'connected' | 'disconnected'>('disconnected')
+  const error = ref<string | null>(null)
   const eventSources = new Map<string, EventSource>()
   let retryDelay = 1000
   const MAX_RETRY_DELAY = 30000
 
-  function validateTopic(topic: string): boolean {
-    // Topics should be URL-safe strings, no scripts
-    return /^[\w./-]+$/.test(topic)
+  const isConnected = computed(() => connectionStatus.value === 'connected')
+
+  function validateTopic(t: string): boolean {
+    return /^[\w./-]+$/.test(t)
   }
 
-  function subscribe(topic: string, callback: (data: unknown) => void): () => void {
-    if (!validateTopic(topic)) {
-      console.error(`[Mercure] Invalid topic format: ${topic}`)
+  function subscribe(t: string, callback: (data: unknown) => void): () => void {
+    if (!validateTopic(t)) {
+      error.value = `Format de topic invalide : ${t}`
       return () => {}
     }
 
+    error.value = null
     const url = new URL(mercureUrl)
-    url.searchParams.append('topic', topic)
+    url.searchParams.append('topic', t)
 
     function connect() {
       connectionStatus.value = 'connecting'
@@ -35,7 +43,8 @@ export const useMercure = () => {
 
       es.onopen = () => {
         connectionStatus.value = 'connected'
-        retryDelay = 1000 // Reset on successful connection
+        error.value = null
+        retryDelay = 1000
       }
 
       es.onmessage = (event) => {
@@ -49,12 +58,12 @@ export const useMercure = () => {
 
       es.onerror = () => {
         connectionStatus.value = 'disconnected'
+        error.value = 'Connexion au serveur perdue'
         es.close()
-        eventSources.delete(topic)
+        eventSources.delete(t)
 
-        // Exponential backoff reconnect
         setTimeout(() => {
-          if (!eventSources.has(topic)) {
+          if (!eventSources.has(t)) {
             connect()
           }
         }, retryDelay)
@@ -62,41 +71,45 @@ export const useMercure = () => {
         retryDelay = Math.min(retryDelay * 2, MAX_RETRY_DELAY)
       }
 
-      eventSources.set(topic, es)
+      eventSources.set(t, es)
     }
 
     connect()
-
-    // Return unsubscribe function
-    return () => unsubscribe(topic)
+    return () => unsubscribe(t)
   }
 
-  function unsubscribe(topic: string) {
-    const es = eventSources.get(topic)
+  function unsubscribe(t: string) {
+    const es = eventSources.get(t)
     if (es) {
       es.close()
-      eventSources.delete(topic)
+      eventSources.delete(t)
     }
     if (eventSources.size === 0) {
       connectionStatus.value = 'disconnected'
     }
   }
 
-  function disconnectAll() {
+  function close() {
     eventSources.forEach((es) => es.close())
     eventSources.clear()
     connectionStatus.value = 'disconnected'
   }
 
-  // Cleanup on unmount
+  // Auto-subscribe if topic + callback provided
+  if (topic && onMessage) {
+    subscribe(topic, onMessage)
+  }
+
   onUnmounted(() => {
-    disconnectAll()
+    close()
   })
 
   return {
+    isConnected,
     connectionStatus: readonly(connectionStatus),
+    error: readonly(error),
     subscribe,
     unsubscribe,
-    disconnectAll,
+    close,
   }
 }
