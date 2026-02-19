@@ -128,6 +128,15 @@ export interface Transaction {
   documentId: number
 }
 
+// --- Event Provider (prestataire rattaché à un événement) ---
+export interface PendingProvider {
+  id: number
+  companyName: string
+  category: string
+  status: 'pending' | 'approved' | 'rejected'
+  createdAt: string
+}
+
 // --- Provider (du point de vue utilisateur) ---
 export interface Provider {
   id: number
