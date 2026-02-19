@@ -7,6 +7,7 @@ definePageMeta({ layout: 'auth', middleware: ['guest'] })
 
 const authStore = useAuthStore()
 const success = ref(false)
+const cooldown = ref(false)
 
 const { handleSubmit, isSubmitting } = useForm({
   validationSchema: toTypedSchema(forgotPasswordSchema),
@@ -15,13 +16,20 @@ const { handleSubmit, isSubmitting } = useForm({
 const { value: email, errorMessage: emailError } = useField<string>('email')
 
 const onSubmit = handleSubmit(async (values) => {
+  if (cooldown.value) return
+
+  const minDelay = new Promise(resolve => setTimeout(resolve, 1000))
+
   try {
-    await authStore.forgotPassword(values.email)
+    await Promise.all([authStore.forgotPassword(values.email), minDelay])
   } catch {
-    // On affiche le même message quoi qu'il arrive (anti-énumération d'emails)
+    // Même message quoi qu'il arrive (anti-énumération d'emails)
+    await minDelay
   }
-  // Toujours afficher le succès (sécurité)
+
   success.value = true
+  cooldown.value = true
+  setTimeout(() => { cooldown.value = false }, 30_000)
 })
 </script>
 
@@ -44,7 +52,7 @@ const onSubmit = handleSubmit(async (values) => {
           required
         />
 
-        <BelButton label="ENVOYER" type="submit" :loading="isSubmitting" />
+        <BelButton label="ENVOYER" type="submit" :loading="isSubmitting" :disabled="cooldown" />
       </form>
     </template>
 
