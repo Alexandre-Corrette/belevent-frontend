@@ -42,7 +42,7 @@ export const useSiret = () => {
     } finally {
       loading.value = false
     }
-  }, 500)
+  }, 300)
 
   function searchSiret(siret: string) {
     debouncedSearch(siret)
