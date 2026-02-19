@@ -126,6 +126,15 @@ export const useAuthStore = defineStore('auth', () => {
     })
   }
 
+  async function updateProfile(data: { firstName: string; lastName: string; phone?: string | null }) {
+    const { apiFetch } = useApi()
+    await apiFetch('/me', {
+      method: 'PUT',
+      body: data,
+    })
+    await fetchMe()
+  }
+
   function switchCompany(companyId: number) {
     currentCompanyId.value = companyId
   }
@@ -151,6 +160,7 @@ export const useAuthStore = defineStore('auth', () => {
     forgotPassword,
     resetPassword,
     verifyInvitationToken,
+    updateProfile,
     switchCompany,
   }
 })

@@ -87,6 +87,27 @@ export const resetPasswordSchema = z
     path: ['confirmPassword'],
   })
 
+export const profileSchema = z.object({
+  firstName: safeString.pipe(
+    z.string().min(2, 'Le prénom doit contenir au moins 2 caractères'),
+  ),
+  lastName: safeString.pipe(
+    z.string().min(2, 'Le nom doit contenir au moins 2 caractères'),
+  ),
+  phone: z.string().optional(),
+})
+
+export const changePasswordSchema = z
+  .object({
+    currentPassword: z.string().min(1, 'Mot de passe actuel requis'),
+    newPassword: passwordComplexity,
+    confirmPassword: z.string(),
+  })
+  .refine((data) => data.newPassword === data.confirmPassword, {
+    message: 'Les mots de passe ne correspondent pas',
+    path: ['confirmPassword'],
+  })
+
 // --- Types inférés ---
 
 export type LoginFormData = z.infer<typeof loginSchema>
@@ -94,6 +115,8 @@ export type RegisterStep1FormData = z.infer<typeof registerStep1Schema>
 export type FirstLoginFormData = z.infer<typeof firstLoginSchema>
 export type ForgotPasswordFormData = z.infer<typeof forgotPasswordSchema>
 export type ResetPasswordFormData = z.infer<typeof resetPasswordSchema>
+export type ProfileFormData = z.infer<typeof profileSchema>
+export type ChangePasswordFormData = z.infer<typeof changePasswordSchema>
 
 // --- Export helpers pour réutilisation ---
 
