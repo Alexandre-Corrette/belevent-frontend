@@ -26,15 +26,26 @@ const onSubmit = handleSubmit(async (values) => {
   try {
     await authStore.login({ email: values.email, password: values.password })
 
-    if (authStore.isPresta) {
-      await router.push('/presta')
-    } else if (authStore.isUser) {
-      await router.push('/user')
+    const roleRedirects: [string, string][] = [
+      ['ROLE_ADMIN', '/admin'],
+      ['ROLE_PRESTA', '/presta'],
+      ['ROLE_USER', '/user'],
+    ]
+
+    const match = roleRedirects.find(([role]) =>
+      authStore.user?.roles?.includes(role),
+    )
+    await router.push(match?.[1] ?? '/auth/login')
+  } catch (err: unknown) {
+    const status = err && typeof err === 'object' && 'status' in err
+      ? (err as { status: number }).status
+      : null
+
+    if (status === 429) {
+      serverError.value = 'Trop de tentatives, réessayez dans quelques minutes'
     } else {
-      await router.push('/')
+      serverError.value = 'Identifiants incorrects'
     }
-  } catch {
-    serverError.value = 'Identifiants incorrects'
     // Anti-brute-force côté UI : cooldown 3s
     loginCooldown.value = true
     setTimeout(() => {
@@ -63,6 +74,7 @@ const onSubmit = handleSubmit(async (values) => {
         label="Mot de passe"
         type="password"
         placeholder="Votre mot de passe"
+        autocomplete="current-password"
         :error="passwordError"
         required
       />
