@@ -6,6 +6,7 @@ export default defineNuxtRouteMiddleware(async () => {
   const auth = useAuthStore()
 
   if (auth.isAuthenticated) {
+    if (auth.isAdmin) return navigateTo('/admin')
     if (auth.isPresta) return navigateTo('/presta')
     if (auth.isUser) return navigateTo('/user')
   }
