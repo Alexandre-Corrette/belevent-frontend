@@ -2,6 +2,20 @@
 // Types miroir des entités backend
 // ========================================
 
+// Re-export presta types
+export type {
+  PrestaEvent,
+  PrestaEventProvider,
+  EventProviderStatus,
+  PrestaClient,
+  PrestaDocument,
+  DashboardStats,
+  AgendaItem,
+  AgendaItemType,
+  EventFilters,
+  DocumentFilters,
+} from './presta'
+
 // --- Auth ---
 export interface User {
   id: number
