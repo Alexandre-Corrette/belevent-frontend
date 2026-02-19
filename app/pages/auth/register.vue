@@ -38,8 +38,10 @@ async function handleStep1(data: {
         ? (err as { status: number }).status
         : null
 
-    if (status === 409 && step1Ref.value) {
-      step1Ref.value.serverError = 'Cette adresse email est déjà utilisée'
+    if (step1Ref.value) {
+      step1Ref.value.serverError = status === 422
+        ? 'Veuillez vérifier les informations saisies'
+        : 'Impossible de créer le compte'
     }
   }
 }
