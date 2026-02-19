@@ -79,7 +79,17 @@ const onChangePassword = handleChangeSubmit(async (values) => {
   serverError.value = ''
   try {
     await authStore.changePassword(loginPassword.value, values.password)
-    await router.push('/user')
+    await authStore.fetchMe()
+
+    const roleRedirects: [string, string][] = [
+      ['ROLE_ADMIN', '/admin'],
+      ['ROLE_PRESTA', '/presta'],
+      ['ROLE_USER', '/user'],
+    ]
+    const match = roleRedirects.find(([role]) =>
+      authStore.user?.roles?.includes(role),
+    )
+    await router.push(match?.[1] ?? '/user')
   } catch {
     serverError.value = 'Impossible de changer le mot de passe'
   }
@@ -131,9 +141,11 @@ const onChangePassword = handleChangeSubmit(async (values) => {
 
     <!-- Step 2: Changement de mot de passe -->
     <template v-else>
-      <h1 class="auth-first-login__title">Nouveau mot de passe</h1>
+      <h1 class="auth-first-login__title">
+        Bienvenue {{ authStore.user?.firstName }} !
+      </h1>
       <p class="auth-first-login__subtitle">
-        Choisissez votre nouveau mot de passe.
+        Pour commencer, choisissez votre mot de passe.
       </p>
 
       <form class="auth-first-login__form" @submit.prevent="onChangePassword">
