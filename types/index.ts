@@ -8,6 +8,7 @@ export interface User {
   email: string
   firstName: string
   lastName: string
+  phone: string | null
   role: 'ROLE_PRESTA' | 'ROLE_USER' | 'ROLE_ADMIN'
   isPasswordTemporary: boolean
   createdAt: string
