@@ -129,6 +129,24 @@ export interface Transaction {
   documentId: number
 }
 
+// --- Event Invite ---
+export interface EventLookup {
+  id: number
+  title: string
+  type: string
+  date: string
+  guestCount: number | null
+  clientName: string
+}
+
+export interface EventProvider {
+  id: number
+  eventId: number
+  companyId: number
+  category: string
+  status: string
+}
+
 // --- Provider (du point de vue utilisateur) ---
 export interface Provider {
   id: number
