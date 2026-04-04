@@ -1,0 +1,196 @@
+@use ".." as *;
+
+.presta-dashboard {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $space-lg;
+
+    @media (max-width: $bp-mobile) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: $space-sm;
+    }
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: $bel-text-dark;
+  }
+
+  // --- Stats Grid ---
+  &__stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $space-md;
+    margin-bottom: $space-xl;
+
+    @media (max-width: $bp-mobile) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__stat-card {
+    display: flex;
+    align-items: center;
+    gap: $space-md;
+  }
+
+  &__stat-info {
+    display: flex;
+    flex-direction: column;
+    gap: $space-xs;
+    min-width: 0;
+  }
+
+  &__stat-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: $bel-text-muted;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  &__stat-value {
+    font-family: $font-display;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: $bel-text-dark;
+  }
+
+  &__stat-sub {
+    font-size: 0.8rem;
+    color: $bel-text-light;
+  }
+
+  // --- Agenda ---
+  &__agenda {
+    margin-top: $space-lg;
+  }
+
+  &__agenda-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $space-md;
+  }
+
+  &__agenda-title {
+    font-family: $font-display;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: $bel-text-dark;
+  }
+
+  &__agenda-list {
+    display: flex;
+    flex-direction: column;
+    gap: $space-sm;
+  }
+
+  &__agenda-item {
+    display: flex;
+    align-items: center;
+    gap: $space-md;
+    padding: $space-sm $space-md;
+    border-radius: $radius-sm;
+    background-color: $bel-bg-white;
+    border: 1px solid $bel-bg-warm;
+    cursor: pointer;
+    transition: background-color $transition-fast;
+
+    &:hover {
+      background-color: $bel-bg-cream;
+    }
+
+    &--done {
+      opacity: 0.5;
+
+      .presta-dashboard__agenda-label {
+        text-decoration: line-through;
+      }
+    }
+  }
+
+  &__agenda-checkbox {
+    width: 20px;
+    height: 20px;
+    border-radius: $radius-sm;
+    border: 2px solid $bel-primary;
+    background: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background-color $transition-fast;
+    padding: 0;
+
+    &--checked {
+      background-color: $bel-primary;
+      color: $bel-bg-white;
+    }
+  }
+
+  &__agenda-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__agenda-label {
+    font-size: 0.9rem;
+    color: $bel-text-dark;
+  }
+
+  &__agenda-due {
+    font-size: 0.75rem;
+    color: $bel-text-light;
+    margin-top: 2px;
+  }
+
+  &__agenda-type {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+
+  // --- Skeleton ---
+  &__skeleton-card {
+    height: 100px;
+    background: linear-gradient(
+      90deg,
+      $bel-bg-warm 25%,
+      $bel-bg-cream 50%,
+      $bel-bg-warm 75%
+    );
+    background-size: 200% 100%;
+    animation: skeleton-pulse 1.5s ease-in-out infinite;
+    border-radius: $radius-md;
+  }
+
+  &__skeleton-row {
+    height: 48px;
+    background: linear-gradient(
+      90deg,
+      $bel-bg-warm 25%,
+      $bel-bg-cream 50%,
+      $bel-bg-warm 75%
+    );
+    background-size: 200% 100%;
+    animation: skeleton-pulse 1.5s ease-in-out infinite;
+    border-radius: $radius-sm;
+  }
+}
+
+@keyframes skeleton-pulse {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
