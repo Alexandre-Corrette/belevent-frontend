@@ -57,6 +57,8 @@ export interface Company {
   stripeOnboardingStatus: 'not_started' | 'pending' | 'verified' | 'rejected'
   stripeChargesEnabled: boolean
   stripePayoutsEnabled: boolean
+  /** Plan d'abonnement — gère la visibilité des features réservées (ex. onglet PRESTATAIRES). */
+  plan?: 'presta' | 'presta+'
 }
 
 export interface Contact {
