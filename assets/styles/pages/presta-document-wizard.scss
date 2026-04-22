@@ -1,0 +1,103 @@
+@use ".." as *;
+
+.presta-document-wizard {
+  &__header {
+    margin-bottom: $space-lg;
+  }
+
+  &__back {
+    display: inline-block;
+    margin-bottom: $space-sm;
+    font-size: 0.85rem;
+    color: $bel-text-muted;
+    text-decoration: none;
+
+    &:hover {
+      color: $bel-primary;
+    }
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: $bel-text-dark;
+    margin: 0;
+  }
+
+  // --- Step content shared ---
+  &__step {
+    display: flex;
+    flex-direction: column;
+    gap: $space-md;
+  }
+
+  &__step-title {
+    font-family: $font-display;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: $bel-text-dark;
+    margin: 0;
+  }
+
+  &__step-desc {
+    font-size: 0.9rem;
+    color: $bel-text-muted;
+    margin: 0;
+  }
+
+  &__mode-picker {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-md;
+    padding: $space-sm $space-md;
+    background-color: $bel-bg-cream;
+    border-radius: $radius-sm;
+
+    label {
+      display: inline-flex;
+      align-items: center;
+      gap: $space-xs;
+      font-size: 0.9rem;
+      color: $bel-text-dark;
+      cursor: pointer;
+    }
+
+    input[type='radio'] {
+      accent-color: $bel-primary;
+      cursor: pointer;
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: $space-md;
+  }
+
+  &__step-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: $space-sm;
+    margin-top: $space-sm;
+  }
+
+  &__error {
+    color: $bel-danger;
+    font-size: 0.85rem;
+    margin: 0;
+  }
+
+  // --- Event code lookup result card ---
+  &__lookup-card {
+    background-color: $bel-bg-white;
+    border: 1px solid $bel-primary;
+    border-radius: $radius-md;
+    padding: $space-md;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 0.9rem;
+    color: $bel-text-dark;
+  }
+}

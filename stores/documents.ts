@@ -173,6 +173,21 @@ export const useDocumentsStore = defineStore('documents', () => {
     }
   }
 
+  async function uploadDocumentFile(id: number, file: File) {
+    const { baseURL } = useApi()
+    const formData = new FormData()
+    formData.append('file', file)
+    const res = await fetch(`${baseURL}/presta/documents/${id}/file`, {
+      method: 'POST',
+      body: formData,
+      credentials: 'include',
+    })
+    if (!res.ok) {
+      error.value = 'Le document a été créé mais l\'upload du fichier a échoué'
+      throw new Error(`Upload failed: ${res.status}`)
+    }
+  }
+
   function setFilters(newFilters: DocumentFilters) {
     filters.value = newFilters
   }
@@ -202,6 +217,7 @@ export const useDocumentsStore = defineStore('documents', () => {
     deleteDocument,
     sendDocument,
     downloadDocument,
+    uploadDocumentFile,
     setFilters,
     $reset,
   }
