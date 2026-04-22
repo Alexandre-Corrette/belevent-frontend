@@ -1,0 +1,105 @@
+@use ".." as *;
+
+.presta-documents {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: $space-md;
+    margin-bottom: $space-lg;
+
+    @media (max-width: $bp-mobile) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: $bel-text-dark;
+    margin: 0;
+  }
+
+  &__header-actions {
+    display: flex;
+    align-items: center;
+    gap: $space-sm;
+
+    @media (max-width: $bp-mobile) {
+      width: 100%;
+      justify-content: space-between;
+    }
+  }
+
+  &__toolbar {
+    display: flex;
+    gap: $space-md;
+    align-items: end;
+    margin-bottom: $space-md;
+
+    @media (max-width: $bp-mobile) {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+
+  // --- Type pill (devis / facture) ---
+  &__type {
+    display: inline-block;
+    padding: $space-xs $space-sm;
+    border-radius: $radius-full;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    line-height: 1;
+
+    &--devis {
+      background-color: rgba($bel-info, 0.12);
+      color: $bel-info;
+    }
+    &--facture {
+      background-color: rgba($bel-accent, 0.18);
+      color: darken($bel-accent, 10%);
+    }
+    &--contrat {
+      background-color: rgba($bel-text-muted, 0.18);
+      color: $bel-text-muted;
+    }
+  }
+
+  // --- Status pill ---
+  &__status {
+    display: inline-block;
+    padding: $space-xs $space-sm;
+    border-radius: $radius-full;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    line-height: 1;
+
+    &--draft {
+      background-color: rgba($bel-text-muted, 0.12);
+      color: $bel-text-muted;
+    }
+    &--sent {
+      background-color: rgba($bel-info, 0.12);
+      color: $bel-info;
+    }
+    &--accepted {
+      background-color: rgba($bel-success, 0.12);
+      color: $bel-success;
+    }
+    &--refused {
+      background-color: rgba($bel-danger, 0.12);
+      color: $bel-danger;
+    }
+    &--paid {
+      background-color: rgba($bel-success, 0.18);
+      color: $bel-success;
+    }
+  }
+}
