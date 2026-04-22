@@ -1,0 +1,94 @@
+@use ".." as *;
+
+.presta-events {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: $space-md;
+    margin-bottom: $space-lg;
+
+    @media (max-width: $bp-mobile) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: $bel-text-dark;
+  }
+
+  &__header-actions {
+    display: flex;
+    align-items: center;
+    gap: $space-sm;
+
+    @media (max-width: $bp-mobile) {
+      width: 100%;
+      justify-content: space-between;
+    }
+  }
+
+  &__toolbar {
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    gap: $space-md;
+    align-items: end;
+    margin-bottom: $space-lg;
+
+    @media (max-width: $bp-mobile) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__toolbar-filter {
+    min-width: 200px;
+
+    @media (max-width: $bp-mobile) {
+      min-width: 0;
+    }
+  }
+
+  &__toolbar-search {
+    min-width: 240px;
+
+    @media (max-width: $bp-mobile) {
+      min-width: 0;
+    }
+  }
+
+  // --- Status pill ---
+  &__status {
+    display: inline-block;
+    padding: $space-xs $space-sm;
+    border-radius: $radius-full;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    line-height: 1;
+
+    &--inquiry {
+      background-color: rgba($bel-info, 0.12);
+      color: $bel-info;
+    }
+
+    &--quoted {
+      background-color: rgba($bel-warning, 0.12);
+      color: $bel-warning;
+    }
+
+    &--confirmed {
+      background-color: rgba($bel-success, 0.12);
+      color: $bel-success;
+    }
+
+    &--cancelled {
+      background-color: rgba($bel-danger, 0.12);
+      color: $bel-danger;
+    }
+  }
+}

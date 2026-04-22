@@ -2,6 +2,20 @@
 // Types miroir des entités backend
 // ========================================
 
+// Re-export presta types
+export type {
+  PrestaEvent,
+  PrestaEventProvider,
+  EventProviderStatus,
+  PrestaClient,
+  PrestaDocument,
+  DashboardStats,
+  AgendaItem,
+  AgendaItemType,
+  EventFilters,
+  DocumentFilters,
+} from './presta'
+
 // --- Auth ---
 export interface User {
   id: number
@@ -43,6 +57,8 @@ export interface Company {
   stripeOnboardingStatus: 'not_started' | 'pending' | 'verified' | 'rejected'
   stripeChargesEnabled: boolean
   stripePayoutsEnabled: boolean
+  /** Plan d'abonnement — gère la visibilité des features réservées (ex. onglet PRESTATAIRES). */
+  plan?: 'presta' | 'presta+'
 }
 
 export interface Contact {

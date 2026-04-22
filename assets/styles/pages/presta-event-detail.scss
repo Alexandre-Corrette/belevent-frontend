@@ -1,0 +1,339 @@
+@use ".." as *;
+
+.event-detail {
+  &__loading {
+    color: $bel-text-muted;
+    font-style: italic;
+  }
+
+  &__back {
+    display: inline-block;
+    margin-bottom: $space-sm;
+    font-size: 0.85rem;
+    color: $bel-text-muted;
+    text-decoration: none;
+
+    &:hover {
+      color: $bel-primary;
+    }
+  }
+
+  &__header {
+    margin-bottom: $space-lg;
+    display: flex;
+    flex-direction: column;
+    gap: $space-sm;
+
+    @media (min-width: $bp-mobile) {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: start;
+
+      .event-detail__back {
+        grid-column: 1 / -1;
+      }
+    }
+  }
+
+  &__title-row {
+    display: flex;
+    align-items: center;
+    gap: $space-md;
+    flex-wrap: wrap;
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: $bel-text-dark;
+    margin: 0;
+  }
+
+  &__actions {
+    display: flex;
+    gap: $space-sm;
+  }
+
+  // Status pill (event-level, reuses presta-events palette)
+  &__status {
+    display: inline-block;
+    padding: $space-xs $space-sm;
+    border-radius: $radius-full;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    line-height: 1;
+
+    &--inquiry {
+      background-color: rgba($bel-info, 0.12);
+      color: $bel-info;
+    }
+    &--quoted {
+      background-color: rgba($bel-warning, 0.12);
+      color: $bel-warning;
+    }
+    &--confirmed {
+      background-color: rgba($bel-success, 0.12);
+      color: $bel-success;
+    }
+    &--cancelled {
+      background-color: rgba($bel-danger, 0.12);
+      color: $bel-danger;
+    }
+  }
+
+  // Info panel
+  &__info {
+    background-color: $bel-bg-white;
+    border: 1px solid $bel-bg-warm;
+    border-radius: $radius-md;
+    padding: $space-md $space-lg;
+    margin-bottom: $space-lg;
+    display: flex;
+    flex-direction: column;
+    gap: $space-md;
+  }
+
+  &__info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: $space-md;
+  }
+
+  &__info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  &__info-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: $bel-text-muted;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  &__info-value {
+    font-size: 0.95rem;
+    color: $bel-text-dark;
+  }
+
+  &__invite {
+    display: flex;
+    justify-content: center;
+  }
+
+  // Tabs content
+  &__tab {
+    margin-top: $space-lg;
+  }
+
+  // Document list (master)
+  &__doc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: $space-xs;
+  }
+
+  &__doc-row {
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    gap: $space-sm;
+    align-items: center;
+    padding: $space-sm $space-md;
+    border-radius: $radius-sm;
+    background-color: $bel-bg-white;
+    border: 1px solid $bel-bg-warm;
+    cursor: pointer;
+    transition: background-color $transition-fast, border-color $transition-fast;
+
+    &:hover {
+      background-color: $bel-bg-cream;
+    }
+
+    &--active {
+      border-color: $bel-primary;
+      background-color: $bel-bg-cream;
+    }
+  }
+
+  &__doc-number {
+    font-family: monospace;
+    font-size: 0.8rem;
+    color: $bel-text-muted;
+  }
+
+  &__doc-designation {
+    font-size: 0.9rem;
+    color: $bel-text-dark;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__doc-amount {
+    font-weight: 600;
+    color: $bel-text-dark;
+  }
+
+  &__doc-status {
+    display: inline-block;
+    padding: $space-xs $space-sm;
+    border-radius: $radius-full;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    line-height: 1;
+
+    &--draft {
+      background-color: rgba($bel-text-muted, 0.12);
+      color: $bel-text-muted;
+    }
+    &--sent {
+      background-color: rgba($bel-info, 0.12);
+      color: $bel-info;
+    }
+    &--accepted {
+      background-color: rgba($bel-success, 0.12);
+      color: $bel-success;
+    }
+    &--refused {
+      background-color: rgba($bel-danger, 0.12);
+      color: $bel-danger;
+    }
+    &--paid {
+      background-color: rgba($bel-accent, 0.18);
+      color: darken($bel-accent, 10%);
+    }
+  }
+
+  // Document detail (detail pane)
+  &__doc-detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: $space-md;
+    margin-bottom: $space-md;
+  }
+
+  &__doc-detail-title {
+    font-family: $font-display;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: $bel-text-dark;
+    margin: 0;
+  }
+
+  &__doc-meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: $space-md;
+    margin-bottom: $space-lg;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    dt {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: $bel-text-muted;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    dd {
+      font-size: 0.9rem;
+      color: $bel-text-dark;
+      margin: 0;
+    }
+  }
+
+  &__doc-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-sm;
+  }
+
+  // Provider list
+  &__provider-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: $space-sm;
+  }
+
+  &__provider-row {
+    display: flex;
+    align-items: center;
+    gap: $space-md;
+    padding: $space-sm $space-md;
+    border-radius: $radius-sm;
+    background-color: $bel-bg-white;
+    border: 1px solid $bel-bg-warm;
+    flex-wrap: wrap;
+
+    @media (max-width: $bp-mobile) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  &__provider-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__provider-name {
+    font-weight: 600;
+    color: $bel-text-dark;
+  }
+
+  &__provider-category {
+    font-size: 0.8rem;
+    color: $bel-text-muted;
+  }
+
+  &__provider-status {
+    display: inline-block;
+    padding: $space-xs $space-sm;
+    border-radius: $radius-full;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    line-height: 1;
+
+    &--pending {
+      background-color: rgba($bel-warning, 0.12);
+      color: $bel-warning;
+    }
+    &--confirmed {
+      background-color: rgba($bel-success, 0.12);
+      color: $bel-success;
+    }
+    &--declined {
+      background-color: rgba($bel-danger, 0.12);
+      color: $bel-danger;
+    }
+  }
+
+  &__provider-actions {
+    display: flex;
+    gap: $space-sm;
+  }
+}
