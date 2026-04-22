@@ -177,6 +177,70 @@
   }
 }
 
+// --- Client detail page (BELEVF-59) ---
+.presta-client-detail {
+  &__loading {
+    color: $bel-text-muted;
+    font-style: italic;
+  }
+
+  &__back {
+    display: inline-block;
+    margin-bottom: $space-md;
+    font-size: 0.85rem;
+    color: $bel-text-muted;
+    text-decoration: none;
+
+    &:hover {
+      color: $bel-primary;
+    }
+  }
+
+  &__header {
+    margin-bottom: $space-lg;
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: $bel-text-dark;
+    margin: 0;
+  }
+
+  &__meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: $space-md;
+    margin: 0;
+    background-color: $bel-bg-white;
+    border: 1px solid $bel-bg-warm;
+    border-radius: $radius-md;
+    padding: $space-md $space-lg;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    dt {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: $bel-text-muted;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    dd {
+      font-size: 0.95rem;
+      color: $bel-text-dark;
+      margin: 0;
+      word-break: break-word;
+    }
+  }
+}
+
 // --- Invite modal (scoped BEM to avoid a second scss file) ---
 .client-invite-modal {
   &__form {
