@@ -1,0 +1,193 @@
+@use ".." as *;
+
+.presta-clients {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: $space-md;
+    margin-bottom: $space-lg;
+
+    @media (max-width: $bp-mobile) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: $bel-text-dark;
+    margin: 0;
+  }
+
+  &__header-actions {
+    display: flex;
+    align-items: center;
+    gap: $space-sm;
+
+    @media (max-width: $bp-mobile) {
+      width: 100%;
+      justify-content: space-between;
+    }
+  }
+
+  &__search {
+    margin-bottom: $space-lg;
+    max-width: 420px;
+
+    @media (max-width: $bp-mobile) {
+      max-width: none;
+    }
+  }
+
+  // --- Master list ---
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: $space-xs;
+  }
+
+  &__list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: $space-sm;
+    padding: $space-sm $space-md;
+    border-radius: $radius-sm;
+    background-color: $bel-bg-white;
+    border: 1px solid $bel-bg-warm;
+    cursor: pointer;
+    transition: background-color $transition-fast, border-color $transition-fast;
+
+    &:hover {
+      background-color: $bel-bg-cream;
+    }
+
+    &--active {
+      border-color: $bel-primary;
+      background-color: $bel-bg-cream;
+    }
+  }
+
+  &__list-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+    flex: 1;
+  }
+
+  &__list-name {
+    font-weight: 600;
+    color: $bel-text-dark;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__list-email {
+    font-size: 0.8rem;
+    color: $bel-text-muted;
+    font-family: monospace;
+  }
+
+  &__list-meta {
+    display: flex;
+    gap: $space-xs;
+    flex-shrink: 0;
+  }
+
+  &__list-count {
+    display: inline-block;
+    padding: 2px $space-xs;
+    border-radius: $radius-full;
+    font-size: 0.7rem;
+    font-weight: 600;
+    background-color: rgba($bel-info, 0.12);
+    color: $bel-info;
+    white-space: nowrap;
+
+    &--docs {
+      background-color: rgba($bel-accent, 0.18);
+      color: darken($bel-accent, 10%);
+    }
+  }
+
+  &__list-empty {
+    padding: $space-md;
+    text-align: center;
+    color: $bel-text-muted;
+    font-style: italic;
+  }
+
+  // --- Detail pane ---
+  &__detail {
+    display: flex;
+    flex-direction: column;
+    gap: $space-md;
+  }
+
+  &__detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: $space-md;
+    flex-wrap: wrap;
+  }
+
+  &__detail-title {
+    font-family: $font-display;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: $bel-text-dark;
+    margin: 0;
+  }
+
+  &__detail-meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: $space-md;
+    margin: 0;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    dt {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: $bel-text-muted;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    dd {
+      font-size: 0.9rem;
+      color: $bel-text-dark;
+      margin: 0;
+      word-break: break-word;
+    }
+  }
+}
+
+// --- Invite modal (scoped BEM to avoid a second scss file) ---
+.client-invite-modal {
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: $space-md;
+  }
+
+  &__error {
+    color: $bel-danger;
+    font-size: 0.85rem;
+    margin: 0;
+  }
+}
